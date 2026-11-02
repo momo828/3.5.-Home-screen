@@ -12,58 +12,36 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Catálogo de Películas'),
-          backgroundColor: Colors.indigo,
-        ),
-        body: Center(
-          child: Container(
-            padding: const EdgeInsets.all(16.0),
-            margin: const EdgeInsets.all(20.0),
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(10),
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            // 1. Capa del fondo: Imagen de internet
+            Image.network(
+              'https://www.google.com/imgres?q=imagen%20de%20cine%20animado%C2%A0&imgurl=https%3A%2F%2Fi.pinimg.com%2F736x%2Fd8%2F98%2F70%2Fd89870ecbe781af6cf48d0db5813660d.jpg&imgrefurl=https%3A%2F%2Fes.pinterest.com%2Fpin%2F268667934016380270%2F&docid=t8JWFNjXjBK0EM&tbnid=TxdxayZB-Z_goM&vet=12ahUKEwjE5r7YiOiXAxVFm2oFHcouD-wQnPAOegQIUhAA..i&w=626&h=626&hcb=2&ved=2ahUKEwjE5r7YiOiXAxVFm2oFHcouD-wQnPAOegQIUhAA',
+              fit: BoxFit.cover,
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: 150,
-                      width: double.infinity,
-                      color: Colors.black87,
-                      child: const Center(
-                        child: Text(
-                          'Póster de Inception',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    const Positioned(
-                      top: 10,
-                      right: 10,
-                      child: Icon(Icons.favorite, color: Colors.red, size: 30),
-                    ),
-                  ],
+            Container(color: Colors.black.withOpacity(0.6)),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  'CineApp',
+                  style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    letterSpacing: 2.0,
+                  ),
                 ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Inception',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Text('📅 2010'),
-                    Text('🎬 Sci-Fi'),
-                    Text('⭐ 4.8'),
-                  ],
+                SizedBox(height: 20),
+                Text(
+                  '¡Bienvenido a tu catálogo de películas!',
+                  style: TextStyle(fontSize: 20, color: Colors.white70),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
-          ),
+          ],
         ),
       ),
     );
